@@ -1,17 +1,17 @@
-const mongoose = require("mongoose")
-const {DATABASE_HOST, DATABASE_HOST_LIVE_MONGOOSE} = require("./environment")
+const mongoose = require("mongoose");
+const { DATABASE_NAME, DATABASE_HOST_LIVE_MONGOOSE } = require("./environment");
 
-mongoose.connect(DATABASE_HOST_LIVE_MONGOOSE || DATABASE_HOST , {
+mongoose
+  .connect(DATABASE_HOST_LIVE_MONGOOSE, {
     useUnifiedTopology: true,
-    useNewUrlParser : true
-}
-
-).then(() => {
-    console.log("Connected to database mongoose");
-}).catch(error => {
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch(error => {
     console.log("Error cant connect to database");
-    
-});
+  });
 
-const db  = mongoose.connection
-module.exports = db
+const db = mongoose.connection;
+module.exports = db;
